@@ -6,15 +6,17 @@ const Category = () => {
   const { categoryId, itemId } = useParams();
   const category = categories.find((c) => c.id === categoryId);
 
-  if (!category) return <h2>Category not found</h2>;
+  if (!category || !category.items) {
+    return <h2>Category not found or no items</h2>;
+  }
 
-  const selectedItem = category.items?.find((item) => item.id === itemId);
+  const selectedItem = category.items.find((item) => item.id === itemId);
 
   return (
     <div>
       <h2>{category.name} Items</h2>
       <ul>
-        {category.items?.map((item) => (
+        {category.items.map((item) => (
           <li key={item.id}>
             <Link to={`/${category.id}/${item.id}`}>{item.name}</Link>
           </li>

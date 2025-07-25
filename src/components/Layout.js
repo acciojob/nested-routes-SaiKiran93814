@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
         <ul>
           {categories.map((cat) => (
             <li key={cat.id}>
-              <Link to={`/${cat.id}`}>{cat.name}</Link>
+              <Link to={`/${cat.id}`} data-testid={`link-${cat.id}`}>{cat.name}</Link>
             </li>
           ))}
         </ul>

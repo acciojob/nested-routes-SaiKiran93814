@@ -1,19 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Category from './components/Category';
 import ItemDetail from './components/ItemDetail';
 
-export default function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<p>Select a category from the menu.</p>} />
-          <Route path=":categoryId" element={<Category />}>
-            <Route path=":itemId" element={<ItemDetail />} />
-          </Route>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<h2>Index</h2>} />
+        <Route path=":categoryId" element={<Category />}>
+          <Route path=":itemId" element={<ItemDetail />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
+      </Route>
+    </Routes>
   );
-}
+};
+
+export default App;

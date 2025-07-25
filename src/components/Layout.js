@@ -1,18 +1,22 @@
+import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { categories } from '../data/categories';
 
-export default function Layout() {
+const Layout = () => {
   return (
     <div>
+      {/* <h1>Shop Categories</h1> */}
       <nav>
-        <h2>Categories</h2>
-        <ul>
-          <li><Link to="women">Women</Link></li>
-<li><Link to="men">Men</Link></li>
-
-        </ul>
+        {categories.map((cat) => (
+          <Link key={cat.id} to={`/${cat.id}`} style={{ marginRight: '10px' }}>
+            {cat.name}
+          </Link>
+        ))}
       </nav>
       <hr />
       <Outlet />
     </div>
   );
-}
+};
+
+export default Layout;

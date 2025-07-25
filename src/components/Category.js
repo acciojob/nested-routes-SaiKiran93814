@@ -1,27 +1,26 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
-import { data } from "../data.js";
+import React from 'react';
+import { useParams, Link, Outlet } from 'react-router-dom';
+import { categories } from '../data/categories';
 
-export default function Category() {
+const Category = () => {
   const { categoryId } = useParams();
+  const category = categories.find((c) => c.id === categoryId);
 
-
-  if (!categoryId || !data[categoryId]) {
-    return <p>Category not found</p>;
-  }
-
-  const items = data[categoryId];
+  if (!category) return <h2>Category not found</h2>;
 
   return (
     <div>
-      <h3>{categoryId.toUpperCase()} Items</h3>
+      <h2>{category.name} Items</h2>
       <ul>
-        {items.map(item => (
+        {category.items.map((item) => (
           <li key={item.id}>
-            <Link to={item.id}>{item.name}</Link>
+            <Link to={`${item.id}`}>{item.name}</Link>
           </li>
         ))}
       </ul>
-      <Outlet />
+      <Outlet context={{ category }} />
     </div>
   );
-}
+};
+
+export default Category;

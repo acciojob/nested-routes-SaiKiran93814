@@ -1,16 +1,19 @@
-import { useParams } from 'react-router-dom';
-import { data } from '../data';
+import React from 'react';
+import { useParams, useOutletContext } from 'react-router-dom';
 
-export default function ItemDetail() {
-  const { categoryId, itemId } = useParams();
-  const item = data[categoryId]?.find(i => i.id === itemId);
+const ItemDetail = () => {
+  const { itemId } = useParams();
+  const { category } = useOutletContext();
+  const item = category.items.find((i) => i.id === itemId);
 
-  if (!item) return <p>Item not found.</p>;
+  if (!item) return <p>Item not found</p>;
 
   return (
-    <div style={{ border: '1px solid gray', padding: '10px', marginTop: '10px' }}>
-      <h4>{item.name}</h4>
+    <div>
+      <h3>{item.name}</h3>
       <p>{item.description}</p>
     </div>
   );
-}
+};
+
+export default ItemDetail;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { categories } from '../data/categories';
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
     <div>
       {/* <h1>Shop Categories</h1> */}
@@ -14,7 +14,7 @@ const Layout = () => {
         ))}
       </nav>
       <hr />
-      <Outlet />
+      {children}
     </div>
   );
 };

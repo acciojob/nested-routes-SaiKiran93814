@@ -6,8 +6,9 @@ export default function Layout() {
       <nav>
         <h2>Categories</h2>
         <ul>
-          <li><Link to="/women">Women</Link></li>
-          <li><Link to="/men">Men</Link></li>
+          <li><Link to="women">Women</Link></li>
+<li><Link to="men">Men</Link></li>
+
         </ul>
       </nav>
       <hr />

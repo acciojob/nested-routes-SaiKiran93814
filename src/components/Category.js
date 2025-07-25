@@ -3,7 +3,13 @@ import { data } from "../data.js";
 
 export default function Category() {
   const { categoryId } = useParams();
-  const items = data[categoryId] || [];
+
+
+  if (!categoryId || !data[categoryId]) {
+    return <p>Category not found</p>;
+  }
+
+  const items = data[categoryId];
 
   return (
     <div>
